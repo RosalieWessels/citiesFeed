@@ -13,15 +13,17 @@ struct ContentView: View {
             Text("Cities Feed")
                 .font(.largeTitle)
                 .fontWeight(.bold)
-            ZStack {
-                Image("london")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .overlay(
-                        Rectangle().opacity(0.2)
-                    )
-                Text("London").font(.largeTitle).fontWeight(.bold).foregroundColor(.white)
-            }.cornerRadius(20)
+            ScrollView {
+                VStack {
+                    Card(imageName: "london", textName: "London")
+                    Card(imageName: "newyork", textName: "New York")
+                    Card(imageName: "paris", textName: "Paris")
+                    Card(imageName: "sanfrancisco", textName: "San Francisco")
+                    Card(imageName: "washingtondc", textName: "Washington DC")
+                    Card(imageName: "rome", textName: "Rome")
+                }.padding(.horizontal, 15)
+            }
+            
         }
     }
 }
@@ -29,5 +31,21 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct Card: View {
+    @State var imageName : String
+    @State var textName : String
+    var body: some View {
+        ZStack {
+            Image(imageName)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .overlay(
+                    Rectangle().opacity(0.3)
+                )
+            Text(textName).font(.largeTitle).fontWeight(.bold).foregroundColor(.white)
+        }.cornerRadius(20)
     }
 }
