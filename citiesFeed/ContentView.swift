@@ -9,8 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Cities Feed")
-            .padding()
+        VStack {
+            Text("Cities Feed")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+            ZStack {
+                Image("london")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .overlay(
+                        Rectangle().opacity(0.2)
+                    )
+                Text("London").font(.largeTitle).fontWeight(.bold).foregroundColor(.white)
+            }.cornerRadius(20)
+        }
     }
 }
 
